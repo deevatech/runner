@@ -1,0 +1,4 @@
+package: github.com/deevatech/runner
+import:
+- package: github.com/gin-gonic/gin
+- package: github.com/braintree/manners

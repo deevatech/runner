@@ -1,0 +1,8 @@
+hash: 3b963627801bae1b81727491ac4aaaba18f6cefacbeca974ab284b71bd2a217b
+updated: 2016-04-06T14:38:02.083494851-07:00
+imports:
+- name: github.com/braintree/manners
+  version: 213a497c0285defc24f640dbdb8a30f7d7080310
+- name: github.com/gin-gonic/gin
+  version: 233291e4e2d016084f9e42e786e45dad8858ace4
+devImports: []
