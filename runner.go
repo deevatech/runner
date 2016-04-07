@@ -28,8 +28,8 @@ func main() {
 		port = "8080"
 	}
 
-	log.Printf("Starting in %v mode on port %v\n", gin.Mode(), port)
-	host := fmt.Sprintf(":%v", port)
+	log.Printf("Starting in %s mode on port %s\n", gin.Mode(), port)
+	host := fmt.Sprintf(":%s", port)
 	manners.ListenAndServe(host, router)
 }
 
