@@ -8,8 +8,10 @@ type RunParams struct {
 	Spec     string `json:"spec" binding:"required"`
 }
 
+type JsonResult map[string]interface{}
+
 type RunResults struct {
-	Output string
+	Output interface{} `json:"output"`
 }
 
 type RunContext struct {

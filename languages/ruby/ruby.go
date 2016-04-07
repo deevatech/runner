@@ -2,6 +2,7 @@ package ruby
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	. "github.com/deevatech/runner/types"
 	"io/ioutil"
@@ -57,15 +58,23 @@ func (ctx *Context) runSpec() error {
 	}
 
 	var out bytes.Buffer
-	cmd := exec.Command(rspec, "-fd")
+	cmd := exec.Command(rspec, "-fj", "--no-color")
+	cmd.Dir = ctx.Path
 	cmd.Stdout = &out
-	cmd.Stderr = &out
+	//cmd.Stderr = &out
 
 	if err := cmd.Run(); err != nil {
-		return err
+		// an error here could just mean that not all specs passed
+		// so we can mostly ignore this for now
+		//log.Printf("RUN ERROR: %v -- %s", err, out.String())
 	}
 
-	ctx.Results.Output = out.String()
+	//ctx.Results.Output = out.String()
+	var output JsonResult
+	if err := json.Unmarshal(out.Bytes(), &output); err != nil {
+		return err
+	}
+	ctx.Results.Output = output
 
 	return nil
 }

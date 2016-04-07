@@ -34,7 +34,7 @@ func main() {
 }
 
 func handleRunRequest(c *gin.Context) {
-	//defer manners.Close()
+	defer manners.Close()
 
 	var run RunParams
 
